@@ -2,51 +2,84 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\Models\Contacto;
-
-use Mail;
+use Illuminate\Http\Request;
 
 class ContactoController extends Controller
 {
-    public function index() {
-        return view('contact-us');
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
-    public function save(Request $request) {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'subject' => 'required',
-            'phone_number' => 'required',
-            'message' => 'required'
-        ]);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
-        $contacto = new Contacto;
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-        $contacto->name = $request->name;
-        $contacto->email = $request->email;
-        $contacto->subject = $request->subject;
-        $contacto->phone_number = $request->phone_number;
-        $contacto->message = $request->message;
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Contacto  $contacto
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Contacto $contacto)
+    {
+        //
+    }
 
-        $contact->save();
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Contacto  $contacto
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Contacto $contacto)
+    {
+        //
+    }
 
-        \Mail::send('contact email',
-                    array(
-                        'name' => $request->get('name'),
-                        'email' => $request->get('email'),
-                        'subject' => $request->get('subject'),
-                        'phone_number' => $request->get('phone_number'),
-                        'user_message' => $request->get('message'),
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Contacto  $contacto
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Contacto $contacto)
+    {
+        //
+    }
 
-                    ), function ($message) use ($request)
-                    {
-                        $message->from($request->email);
-                        $message->to('gastonjzabala@gmail.com');
-                    });
-
-        return back() ->whit('Enviado', 'Gracias por contactarnos');
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\Contacto  $contacto
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Contacto $contacto)
+    {
+        //
     }
 }
