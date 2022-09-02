@@ -15,10 +15,10 @@ use App\Http\Controllers\ContactoController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/contacto', [ContactController::class, 'index']);
+Route::get('contactos', [ContactoController::class, 'index']);
 
-Route::post('/contact0', [ContactController::class, 'save'])->name('contacto.store'); 
+Route::post('contacto', [ContactoController::class, 'store']);
