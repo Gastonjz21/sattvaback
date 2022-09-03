@@ -7,13 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-<h2>Hola Fullstack,</h2>
-{{ $name }}, Se quiere contacto contigo, te dejos los detalles del mensaje: 
-<b>Nombre:</b> {{ $name }} 
-<b>Email:</b> {{ $email }} 
-<b>Telefono:</b> {{ $phone_number }} 
-<b>Asunto:</b> {{ $subject }} 
-<b>Mensaje:</b> {{ $user_message }} 
-<p>Saludos</p> 
+
+<h2>Hola Sattva</h2>
+
+{{ $name }}, Se quiere contactar contigo, te dejos los detalles del mensaje:<br/><br/>
+
+Nombre: {{ $name }} <br/><br/>
+
+Email: {{ $email }} <br/><br/>
+
+Telefono: {{ $phone_number }} <br/><br/>
+
+Tipo de negocio: {{ $subject }} <br/><br/>
+
+Mensaje: {{ $cmessage }}
+
+<p>Saludos</p>
+
 </body>
 </html>

@@ -11,6 +11,6 @@ class Contacto extends Model
         'email',
         'phone_number',
         'subject',
-        'message'
+        'cmessage'
     ];
 }

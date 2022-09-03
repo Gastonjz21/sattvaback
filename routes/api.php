@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,10 @@ use App\Http\Controllers\ContactoController;
 |
 */
 
+
 Route::middleware('auth:sanctum')->get('user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('contacto', [ContactoController::class, 'index']);
-
-Route::post('contacto', [ContactoController::class, 'store']);
+//Ruta para registrar un contacto en la base de datos
+Route::post('insertContacto', [ContactoController::class, 'store']);
