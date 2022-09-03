@@ -35,6 +35,14 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $contacto = Contacto::create([
+            'name' => $request['nombre'],
+            'email' => $request['email'],
+            'subject' => $request['subject'],
+            'phone_number' => $request['phone_number'],
+            'message' => $request['message'],
+        ]);
         //
     }
 
