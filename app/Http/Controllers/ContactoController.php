@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contacto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactoController extends Controller
 {
@@ -35,15 +36,46 @@ class ContactoController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'phone_number' => 'required',
+            'cmessage' => 'required'
+        ]);
         
         $contacto = Contacto::create([
-            'name' => $request['nombre'],
+            'name' => $request['name'],
             'email' => $request['email'],
             'subject' => $request['subject'],
             'phone_number' => $request['phone_number'],
-            'message' => $request['message'],
+            'cmessage' => $request['cmessage']
         ]);
         //
+
+
+        Mail::send(
+            'contact_email',
+            array(
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'subject' => $request->get('subject'),
+                'phone_number' => $request->get('phone_number'),
+                'cmessage' => $request->get('cmessage'),
+            ),
+            function ($menssage) use ($request) {
+                $menssage->from($request->email);
+                $menssage->to('gastonjzabala@gmail.com');
+            }
+
+        );
+
+        // return response()->json([
+        //     "message" => "Mensaje de contacto enviado.",
+        //     'data' => $contacto
+        // ], 201);
+
     }
 
     /**
