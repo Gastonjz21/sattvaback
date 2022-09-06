@@ -15,7 +15,9 @@ class ContactoController extends Controller
      */
     public function index()
     {
-        //
+        $contactos = Contacto::all();
+        return response()->json($contactos);
+
     }
 
     /**
